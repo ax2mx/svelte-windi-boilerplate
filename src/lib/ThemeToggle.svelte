@@ -1,5 +1,4 @@
 <script>
-	import { browser } from '$app/env';
 	import { onMount } from 'svelte';
 
 	const THEME_KEY = 'theme';
@@ -16,15 +15,12 @@
 			isDark = false;
 			store.setItem(THEME_KEY, isDark);
 		}
-		if(isDark) toggle();
+		if (isDark) toggle();
 	});
 
 	const handleTheme = () => {
-		if (browser) {
-			isDark = !isDark;
-			store.setItem(THEME_KEY, isDark);
-			toggle();
-		}
+		store.setItem(THEME_KEY, `${(isDark = !isDark)}`);
+		toggle();
 	};
 </script>
 
